@@ -12,7 +12,7 @@ class Usuario  {
 
 class Admin extends Usuario {
     constructor(){
-        super();
+        super(email, senha);
         this.admin = true;
     }    
 };
