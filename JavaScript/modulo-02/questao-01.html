@@ -7,30 +7,23 @@
 </head>
 <body>
 
-    <ul id="lista" >
+  <button id="new">Novo quadrado</button>
 
-    </ul>
+  <div id="squares"></div>
 
-    
-    <input type="text" id="nome">
-    <button onClick="createNewElement()">Adicionar</button>
+  <script>
+    var btnElement = document.getElementById('new');
+    var squaresElement = document.getElementById('squares');
 
-    <script>
-        function createNewElement(){
-           var nome  = document.querySelector('input#nome');
-           listar(nome.value);
-           nome.value = "";
-        }    
-        function listar(el){
-            var todos = [];
-            todos.push(el);
-            var lista = document.querySelector('ul#lista');
-            for(i=0; i< todos.length; ++i){
-                var listElement = document.createElement('li'); 
-                listElement.innerHTML = todos[i];
-                lista.appendChild(listElement);
-            }          
-        }
-    </script>
+    btnElement.onclick = function () {
+      var square = document.createElement('div');
+
+      square.style.width = '100px';
+      square.style.height = '100px';
+      square.style.backgroundColor = '#F00';
+
+      squaresElement.appendChild(square);
+    };
+  </script>
 </body>
 </html>
