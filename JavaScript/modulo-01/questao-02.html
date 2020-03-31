@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	Número 1<input type="number" id="n1" >
+	Número 2<input type="number" id="n2" >
+	<input type="submit" value="Enviar" onclick="exibirPares()">
+
+	<p id="res"></p>
+
+	<script type="text/javascript">
+		function exibirPares(){
+			var n1 = document.querySelector('input#n1');	
+			var n2 = document.querySelector('input#n2');			
+			var par = document.querySelector('p#res');  
+
+			for(i=n1.value; i <= n2.value; ++i){
+				if(i%2==0){
+					document.writeln(i);
+				}	
+			}	
+
+		}		
+		
+	</script>
+</body>
+</html>

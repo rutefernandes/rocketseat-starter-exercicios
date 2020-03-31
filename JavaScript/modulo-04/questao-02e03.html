@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Github user </p> <input type="text" id="usuario"><br>
+    <input type="button" value="Buscar" onclick="buscarUsuario()">
+
+    <p>Dados do usuario</p>
+    <ul id="listagem">
+        
+    </ul>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xregexp/3.2.0/xregexp-all.min.js"></script>
+    <script>
+        var user = document.querySelector('input#usuario');
+        var repositorios = []
+        var lista = document.querySelector('ul#listagem');
+        function buscarUsuario(){
+            var gituser = user.value;
+            axios.get('https://api.github.com/users/'+ user.value + '/repos')
+            .then(function(response){
+                repositorios = [response.data];
+	            console.log(response.data);                  
+                for(i=0; i< repositorios.length; ++i){
+                    var novoItem = document.createElement('li'); 
+                    novoItem.innerHTML = JSON.stringify(repositorios[i]);
+                    var text = novoItem.match(/("name":);/);
+                    
+                    lista.appendChild(text);
+                }    
+            })    
+            .catch(function(error){
+	            console.warn(error);
+            });  
+
+        }    
+    </script>
+</body>
+</html>

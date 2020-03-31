@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="">
+	<title></title>
+</head>
+<body>
+ 	<form id="form1" action="#">
+		rua <input id="rua" type="text"></input><br>
+		numero <input id="numero" type="number"></input><br>
+		bairro <input id="bairro" type="text"></input><br>
+		cidade <input id="cidade" type="text"></input><br>
+		uf <input id="uf" type="text"></input><br>
+    	<input type="submit" value="Enviar" onclick="exibirInfo()">
+	</form>
+	<br>
+
+	<script type="text/javascript">
+		//document.querySelector('form#form1').addEventListener('submit', exibirInfo());
+
+		function exibirInfo(){
+			var rua = window.document.querySelector('input#rua');
+			var numero = window.document.querySelector('input#numero');
+			var bairro = window.document.querySelector('input#bairro');
+			var cidade = window.document.querySelector('input#cidade');
+			var uf = window.document.querySelector('input#uf');
+			
+			var endereco =  {
+				rua: rua.value,
+				numero: Number(numero.value),
+				bairro: bairro.value,
+				cidade: cidade.value,
+				uf: uf.value
+			}	
+
+			console.log(`O usuário mora em ${endereco.cidade} / ${endereco.uf}, no bairro ${endereco.bairro}, na rua "${endereco.rua}" com nº ${endereco.numero}.`)
+		}	
+
+		
+
+	</script>
+
+</body>
+</html>

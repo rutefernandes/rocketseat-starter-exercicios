@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		function verificarHabilidades(usuarios){ 
+			var a = [];
+			for (i=0; i<usuarios.length; ++i ) {
+				a[i] = usuarios[i].habilidades;
+				console.log(`O ${usuarios[i].nome} possui as habilidades:`);
+				for (let value of a[i]) {
+  					console.log(value);
+				}
+			}
+		}
+
+		var usuarios = [
+			{
+				nome: "Diego",
+				habilidades: ["Javascript", "ReactJS", "Redux"]
+			},
+			{
+				nome: "Gabriel",
+				habilidades: ["VueJS", "Ruby on Rails", "Elixir"]
+			} 
+		];
+
+		verificarHabilidades(usuarios);
+
+
+	</script>
+</body>
+</html>
