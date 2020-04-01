@@ -6,36 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-  <button id="new">Novo quadrado</button>
+    <button id="botao">Adicionar</button>
+    <div id="container">
 
-  <div id="squares"></div>
+    </div>
 
-  <script>
-    var btnElement = document.getElementById('new');
-    var squaresElement = document.getElementById('squares');
+    <script>
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
 
-    function getRandomColor() {
-      var letters = '0123456789ABCDEF';
-      var color = '#';
-      for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
-    }
+        document.querySelector('button#botao').onclick = () =>{
+            var novoElemento = document.createElement('div');
+            novoElemento.style.backgroundColor = '#f00';
+            novoElemento.style.width = '100px';
+            novoElemento.style.height = '100px';
+            document.querySelector('div#container').appendChild(novoElemento);
 
-    btnElement.onclick = function () {
-      var square = document.createElement('div');
+            novoElemento.onmouseover  = () =>  {
+                var newColor = getRandomColor(); // #E943F0
+                novoElemento.style.backgroundColor = newColor;
+            }    
+        }    
 
-      square.style.width = '100px';
-      square.style.height = '100px';
-      square.style.backgroundColor = '#F00';
-
-      square.onmouseover = function () {
-        square.style.backgroundColor = getRandomColor();
-      }
-
-      squaresElement.appendChild(square);
-    };
-  </script>
+    </script>
 </body>
 </html>
