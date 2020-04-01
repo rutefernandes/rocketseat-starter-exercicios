@@ -7,16 +7,11 @@
 
 
 	<script type="text/javascript">
-		function verificarHabilidades(usuarios){ 
-			var a = [];
-			for (i=0; i<usuarios.length; ++i ) {
-				a[i] = usuarios[i].habilidades;
-				console.log(`O ${usuarios[i].nome} possui as habilidades:`);
-				for (let value of a[i]) {
-  					console.log(value);
-				}
-			}
-		}
+		function verificarHabilidades(arr){
+		    for(i=0; i< arr.length; ++i){
+			console.log(`O ${arr[i].nome} possui as habilidades: ${arr[i].habilidades.join(", ")}`);
+		    }    
+		}   
 
 		var usuarios = [
 			{
