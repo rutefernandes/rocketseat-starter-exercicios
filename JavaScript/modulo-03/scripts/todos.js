@@ -1,41 +1,42 @@
-var todos = JSON.parse(localStorage.getItem('list-todos')) || [];
-var lista = document.querySelector('ul#lista');
+var Todos = JSON.parse(localStorage.getItem('list-todos')) || [];
+        var lista = document.querySelector('ul');
 
-function listarTodos(){
-    lista.innerHTML = "";
-    for(i=0; i< todos.length; ++i){
-        var listElement = document.createElement('li');
-        var linkElement = document.createElement('a');
-        linkElement.setAttribute('href', '#')
-        var linkText = document.createTextNode('Excluir');
+        function novoTodo(){
+            let input = document.querySelector('input').value;
+            Todos.push(input);
+            input.value = " ";
+            listarTodos();
+            saveToStorage();
+        }    
+        
+        function listarTodos(){
+            lista.innerHTML = "";
+            for(const [i, v] of Todos.entries()) {
+                // criando item
+                let novoTodo = document.createElement('li');
+                novoTodo.innerHTML = v;
 
-        var pos = todos.indexOf(i);
-        linkElement.setAttribute('onclick', 'deletarTodo(' + pos + ')');
+                // link para remoção
+                let link = document.createElement('a');
+                link.setAttribute('href', '#');
+                let textoLink = document.createTextNode('Remover');
+                link.appendChild(textoLink);
+                
+                link.onclick = () => { deletarTodo(i) }
 
-        linkElement.appendChild(linkText);
-        listElement.innerHTML = todos[i];
+                //adicionando o item a lista
+                lista.appendChild(novoTodo);
+                lista.appendChild(link); 
+            }    
+        }    
+        listarTodos();
+        
+        function deletarTodo(pos){
+            Todos.splice(pos, 1);
+            listarTodos();
+            saveToStorage();
+        }
 
-        lista.appendChild(listElement);
-        lista.appendChild(linkElement);
-    }          
-}
-
-listarTodos()
-
-function criarTodo(){
-    var nome  = document.querySelector('input#nome');
-    todos.push(nome.value);
-    nome.value = "";
-    listarTodos();
-    saveToStorage();
-}    
-
-function deletarTodo(pos){
-    todos.splice(0,1);
-    listarTodos();
-    saveToStorage();
-}
-
-function saveToStorage(){
-	localStorage.setItem('list-todos', JSON.stringify(todos));
-}
+        function saveToStorage(){	
+	        localStorage.setItem('list-todos', JSON.stringify(Todos));
+        }
