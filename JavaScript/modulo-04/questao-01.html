@@ -5,28 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+body>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        function checaIdade(idade){
-             return new Promise(function(resolve, reject){
-                if (idade >= 18){
-                    setTimeout(() => {
-                        resolve("Maior que 18 " + idade);
-                    }, 2000);
-                } else {
-                    reject('Menor que 18'); 
-                }  
+         const checaIdade = (idade => {
+            return new Promise(function(resolve, reject) {
+                setTimeout(() => {
+                    return (idade > 18) ? resolve('Maior que 18') : reject('Menor de 18 ');
+                }, 2000 );
             });    
-        }
-        checaIdade(21)
-            .then(function(response){ 
-                console.log(response);
-                })
-            .catch(function(error){
-                console.warn(error);
-                });        
-
+        }); 
+        checaIdade(11)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.warn(error);
+        });
     </script>
 </body>
 </html>
